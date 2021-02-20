@@ -154,27 +154,38 @@ class Game(tk.Frame):
         self.add_new_tile()
         self.update_GUI()
         self.game_over()
+        
 
     def right(self, event):
+        self.reverse()
         self.stack()
         self.combine()
         self.stack()
+        self.reverse()
         self.add_new_tile()
         self.update_GUI()
         self.game_over()
+
 
     def up(self, event):
+        self.transpose()
         self.stack()
         self.combine()
         self.stack()
+        self.transpose()
         self.add_new_tile()
         self.update_GUI()
         self.game_over()
 
+
     def down(self, event):
+        self.transpose()
+        self.reverse()
         self.stack()
         self.combine()
         self.stack()
+        self.reverse()
+        self.transpose()
         self.add_new_tile()
         self.update_GUI()
         self.game_over()
@@ -189,8 +200,8 @@ class Game(tk.Frame):
         return False
  
     def vertical_move_exists(self):
-        for i in range(4):
-            for j in range(3):
+        for i in range(3):
+            for j in range(4):
                 if self.matrix[i][j] == self.matrix[i + 1][j]:
                     return True
         return False
